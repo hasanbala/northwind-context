@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Table } from "reactstrap";
+import { Button, Table } from "reactstrap";
 
 class ProductList extends Component {
   render() {
@@ -11,21 +11,31 @@ class ProductList extends Component {
         <Table hover>
           <thead>
             <tr>
-              <th>categoryId</th>
+              <th>Number</th>
               <th>productName</th>
               <th>unitPrice</th>
               <th>quantityPerUnit</th>
               <th>unitsInStock</th>
+              <th></th>
             </tr>
           </thead>
           <tbody>
-            {this.props.products.map((product) => (
+            {this.props.products.map((product, index) => (
               <tr key={product.id}>
-                <th scope="row">{product.id}</th>
+                <th scope="row">{index + 1}</th>
                 <td>{product.productName}</td>
                 <td>{product.unitPrice}</td>
                 <td>{product.quantityPerUnit}</td>
                 <td>{product.unitsInStock}</td>
+                <td>
+                  <Button
+                    outline
+                    color="info"
+                    onClick={() => this.props.addToCart(product)}
+                  >
+                    add
+                  </Button>
+                </td>
               </tr>
             ))}
           </tbody>

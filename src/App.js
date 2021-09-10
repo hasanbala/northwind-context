@@ -1,13 +1,18 @@
 import React, { Component } from "react";
-import Navi from "./Navi";
-import CategoryList from "./CategoryList";
-import ProductList from "./ProductList";
+import Navi from "./navi";
+import CategoryList from "./categoryList";
+import ProductList from "./productList";
 import { Col, Container, Row } from "reactstrap";
+import alertify from "alertifyjs";
+import { Route, Switch } from "react-router";
+import CartList from "./cartList";
+import NotFound from "./notFound";
 
 class App extends Component {
   state = {
     currentCategories: "",
     products: [],
+    cart: [],
   };
 
   componentDidMount() {
@@ -18,7 +23,6 @@ class App extends Component {
     this.setState({
       currentCategories: category.categoryName,
     });
-    // console.log(category);
     this.getProducts(category.id);
   };
 
@@ -32,27 +36,73 @@ class App extends Component {
       .then((data) => this.setState({ products: data }));
   };
 
+  addToCart = (product) => {
+    let newCart = this.state.cart;
+    var addedItem = newCart.find((item) => item.product.id === product.id);
+
+    if (addedItem) {
+      addedItem.quantity += 1;
+    } else {
+      newCart.push({ product, quantity: 1 });
+    }
+    this.setState({
+      cart: newCart,
+    });
+    alertify.success(product.productName + "added to cart");
+  };
+
+  removeFromCart = (product) => {
+    let newCart = this.state.cart.filter(
+      (item) => item.product.id !== product.id
+    );
+    this.setState({
+      cart: newCart,
+    });
+    alertify.error(product.productName + "removed to cart");
+  };
+
   render() {
     return (
       <div>
         <Container>
-          <Row>
-            <Navi />
-          </Row>
+          {console.log()}
+          <Navi removeFromCart={this.removeFromCart} cart={this.state.cart} />
           <Row>
             <Col xs="3">
               <CategoryList
+                title="CategoryList"
                 currentCategories={this.state.currentCategories}
                 changeCategory={this.changeCategory}
-                title="CategoryList"
               />
             </Col>
             <Col xs="9">
-              <ProductList
-                products={this.state.products}
-                title="ProductList"
-                currentCategories={this.state.currentCategories}
-              />
+              <Switch>
+                <Route
+                  exact
+                  path="/"
+                  render={(props) => (
+                    <ProductList
+                      {...props}
+                      title="ProductList"
+                      products={this.state.products}
+                      currentCategories={this.state.currentCategories}
+                      addToCart={this.addToCart}
+                    />
+                  )}
+                />
+                <Route
+                  exact
+                  path="/cart"
+                  render={(props) => (
+                    <CartList
+                      {...props}
+                      cart={this.state.cart}
+                      removeFromCart={this.removeFromCart}
+                    />
+                  )}
+                />
+                <Route component={NotFound} />
+              </Switch>
             </Col>
           </Row>
         </Container>
