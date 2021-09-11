@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import {
   Collapse,
   Navbar,
@@ -20,7 +21,8 @@ class Navi extends Component {
           <Collapse navbar>
             <Nav className="mr-auto" navbar>
               <NavItem>
-                <NavLink href="/components/">Components</NavLink>
+                {/* <NavLink ></NavLink> */}
+                {/* <Link to="/form">Form Demo</Link> */}
               </NavItem>
               <CartSummary
                 removeFromCart={this.props.removeFromCart}
