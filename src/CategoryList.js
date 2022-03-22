@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { ListGroup, ListGroupItem } from "reactstrap";
 
 class CategoryList extends Component {
   state = {
@@ -20,21 +19,21 @@ class CategoryList extends Component {
     return (
       <div>
         <h3>{this.props.title}</h3>
-        <ListGroup>
+        <div>
           {this.state.categories.map((category) => (
-            <ListGroupItem
-              active={
-                category.categoryName === this.props.currentCategories
-                  ? true
-                  : false
-              }
+            <div
+              // active={
+              //   category.categoryName === this.props.currentCategories
+              //     ? true
+              //     : false
+              // }
               onClick={() => this.props.changeCategory(category)}
               key={category.id}
             >
               {category.categoryName}
-            </ListGroupItem>
+            </div>
           ))}
-        </ListGroup>
+        </div>
       </div>
     );
   }

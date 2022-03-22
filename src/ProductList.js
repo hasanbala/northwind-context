@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Button, Table } from "reactstrap";
 
 class ProductList extends Component {
   render() {
@@ -8,7 +7,7 @@ class ProductList extends Component {
         <h3>
           {this.props.title} * {this.props.currentCategories}
         </h3>
-        <Table hover>
+        <table>
           <thead>
             <tr>
               <th>Number</th>
@@ -28,18 +27,14 @@ class ProductList extends Component {
                 <td>{product.quantityPerUnit}</td>
                 <td>{product.unitsInStock}</td>
                 <td>
-                  <Button
-                    outline
-                    color="info"
-                    onClick={() => this.props.addToCart(product)}
-                  >
+                  <button onClick={() => this.props.addToCart(product)}>
                     add
-                  </Button>
+                  </button>
                 </td>
               </tr>
             ))}
           </tbody>
-        </Table>
+        </table>
       </div>
     );
   }

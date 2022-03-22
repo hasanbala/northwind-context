@@ -1,10 +1,13 @@
 import React, { Component } from "react";
-import { Button, Table } from "reactstrap";
 
 class CartList extends Component {
+  removeFromCart = (product) => {
+    this.props.removeFromCart(product);
+  };
+
   renderCart() {
     return (
-      <Table striped>
+      <table>
         <thead>
           <tr>
             <th>#</th>
@@ -26,18 +29,18 @@ class CartList extends Component {
               <td>{cartItem.product.quantityPerUnit}</td>
               <td>{cartItem.product.unitsInStock}</td>
               <td>
-                <Button
+                <button
                   outline
                   color="danger"
-                  onClick={() => this.props.removeFromCart(cartItem.product)}
+                  onClick={() => this.removeFromCart(cartItem.product)}
                 >
                   X
-                </Button>
+                </button>
               </td>
             </tr>
           ))}
         </tbody>
-      </Table>
+      </table>
     );
   }
 

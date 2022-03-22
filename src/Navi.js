@@ -1,36 +1,24 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import {
-  Collapse,
-  Navbar,
-  NavbarToggler,
-  NavbarBrand,
-  Nav,
-  NavItem,
-  NavLink,
-} from "reactstrap";
+// import { Link } from "react-router-dom";
+
 import CartSummary from "./cartSummary";
 
 class Navi extends Component {
   render() {
     return (
       <div>
-        <Navbar color="light" light expand="md">
-          <NavbarBrand href="/">Northwind</NavbarBrand>
-          <NavbarToggler />
-          <Collapse navbar>
-            <Nav className="mr-auto" navbar>
-              <NavItem>
-                {/* <NavLink ></NavLink> */}
-                {/* <Link to="/form">Form Demo</Link> */}
-              </NavItem>
+        <div color="light">
+          <a href="/">Northwind</a>
+          <div />
+          <div>
+            <div>
               <CartSummary
                 removeFromCart={this.props.removeFromCart}
                 cart={this.props.cart}
               />
-            </Nav>
-          </Collapse>
-        </Navbar>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }
