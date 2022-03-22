@@ -2,7 +2,7 @@ export const reducer = (state, action) => {
   switch (action.type) {
     case "LOAD":
       return {
-        ...state,
+        products: [...action.payload],
       };
     case "ADD-CART":
       return {
