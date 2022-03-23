@@ -1,13 +1,14 @@
 export const reducer = (state, action) => {
   switch (action.type) {
-    case "LOAD":
-      return {
-        products: [...action.payload],
-      };
-    case "ADD-CART":
+    case "LOAD-CATEGORIES":
       return {
         ...state,
-        cart: [...state.menu, ...action.payload],
+        categories: [...action.payload],
+      };
+    case "LOAD-PRODUCTS":
+      return {
+        ...state,
+        products: [...action.payload],
       };
     default:
       return state;

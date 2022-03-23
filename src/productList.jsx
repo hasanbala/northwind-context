@@ -1,47 +1,30 @@
 import { AppUseContext } from "./context";
+import { Product } from "./product";
 
 export const ProductList = () => {
-  const { category, state } = AppUseContext();
-  const { cart, products } = state;
+  const { state, nowCategory } = AppUseContext();
 
-  const addToCart = () => {
-    // let newCart = cart;
-    // var addedItem = newCart.find((item) => item.product.id === product.id);
-    // if (addedItem) {
-    //   addedItem.quantity += 1;
-    // } else {
-    //   newCart.push({ product, quantity: 1 });
-    // }
-    // this.setState({
-    //   cart: newCart,
-    // });
-  };
+  const filterItem = () =>
+    state.products.filter((item) => item.categoryId === nowCategory.id);
+  const temp = () => (filterItem().length > 0 ? filterItem() : state.products);
+
   return (
     <div>
-      <h3>ProductList * {category}</h3>
+      <h3>ProductList * {nowCategory.categoryName} </h3>
       <table>
         <thead>
           <tr>
-            <th>Number</th>
-            <th>productName</th>
-            <th>unitPrice</th>
-            <th>quantityPerUnit</th>
-            <th>unitsInStock</th>
-            <th></th>
+            {/* <td>Number</td> */}
+            <td>productName</td>
+            <td>unitPrice</td>
+            <td>quantityPerUnit</td>
+            <td>unitsInStock</td>
+            <td>Add to Cart</td>
           </tr>
         </thead>
-        <tbody>
-          {products.map((product, index) => (
-            <tr key={product.id}>
-              <th>{index + 1}</th>
-              <td>{product.productName}</td>
-              <td>{product.unitPrice}</td>
-              <td>{product.quantityPerUnit}</td>
-              <td>{product.unitsInStock}</td>
-              <td>{/* <button onClick={addToCart(product)}>add</button> */}</td>
-            </tr>
-          ))}
-        </tbody>
+        {temp().map((product, index) => (
+          <Product item={product} key={index} />
+        ))}
       </table>
     </div>
   );
