@@ -21,6 +21,7 @@
 
 /* add to cart button */
 .btn-hover.addcart {
+  width: 40px;
   background-image: linear-gradient(
     to right,
     #0ba360,
@@ -93,6 +94,7 @@
 
 /* remove button */
 .btn-hover.rmv {
+  width: 40px;
   background-image: linear-gradient(
     to right,
     #e1256d,
@@ -105,6 +107,8 @@
 
 /* admin button */
 .btn-hover.admin {
+  width: 80px;
+  cursor: not-allowed;
   background-image: linear-gradient(
     to right,
     #bebebe,

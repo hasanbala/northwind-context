@@ -1,13 +1,13 @@
-import { AppUseContext } from "./context";
+import { AppUseContext } from "../context";
 
 export const CategoryList = () => {
-  const { state, setNowcategory } = AppUseContext();
+  const { categoryState, setNowcategory } = AppUseContext();
   const changeCategory = (category) => setNowcategory(category);
 
   return (
     <div>
       <ul>
-        {state.categories.map((category) => (
+        {categoryState.categories.map((category) => (
           <li onClick={() => changeCategory(category)} key={category.id}>
             {category.categoryName}
           </li>

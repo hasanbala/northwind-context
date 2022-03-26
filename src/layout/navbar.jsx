@@ -1,13 +1,12 @@
-import { useRef } from "react";
 import { AppUseContext } from "../context";
+import { useRef } from "react";
 import { Button } from "../components";
 import { Link } from "react-router-dom";
 import { Toggle } from "./toogle";
 import "../styles/navbar.css";
 
 export const Navi = () => {
-  const { state, items } = AppUseContext();
-  const { cart } = state;
+  const { cartState } = AppUseContext();
   const openNav = useRef();
   const closeNavX = useRef();
   const closeNav = useRef();
@@ -25,16 +24,14 @@ export const Navi = () => {
 
   const cartBar = () => (
     <li style={{ marginRight: "20px" }}>
-      {items.length > 0 && (
-        <Link to="/cart">
-          <Button
-            btn="btn-hover cart"
-            message="Cart"
-            icon={true}
-            len={items.length}
-          />
-        </Link>
-      )}
+      <Link to="/cart">
+        <Button
+          btn="btn-hover cart"
+          message="Cart"
+          icon={true}
+          len={cartState.length}
+        />
+      </Link>
     </li>
   );
 

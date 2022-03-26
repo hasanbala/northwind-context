@@ -1,8 +1,7 @@
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
-import { NotFound } from "./notFound";
+import { Menu, NotFound } from "./pages";
 import { Navi } from "./layout";
-import { Menu } from "./menu";
 import "./styles/app.css";
 
 export const App = () => {
