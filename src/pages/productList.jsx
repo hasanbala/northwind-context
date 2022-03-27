@@ -17,32 +17,36 @@ export const ProductList = () => {
   const handlePop = (item) =>
     cartDispatch({ type: "POP-PRODUCTS", payload: { quantity: 1, item } });
 
-  const handleQuantity = (item) =>
+  const handleQuantity = (id) =>
     cartState.map((basket) => {
-      if (basket.item.id === item.id) {
+      if (basket.item.id === id) {
         return basket.quantity;
       }
       return null;
     });
 
-  const handleTrash = (item) =>
+  const handleTrash = (id) =>
     cartState.map((basket) => {
-      if (basket.item.id === item.id && basket.quantity > 0) {
+      if (basket.item.id === id && basket.quantity > 0) {
         return "true";
       }
       return null;
     });
+
+  const handleTrashCheck = (id) =>
+    handleTrash(id).find((item) => item === "true");
+
   return (
-    <div>
-      <h3>ProductList * {nowCategory.categoryName} </h3>
+    <div className="product">
+      <h3> {nowCategory.categoryName ?? "* ProductList"} </h3>
       <table>
         <thead>
           <tr>
             <td>Number</td>
-            <td>productName</td>
-            <td>unitPrice</td>
-            <td>quantityPerUnit</td>
-            <td>unitsInStock</td>
+            <td>Product Name</td>
+            <td>Unit Price</td>
+            <td>Quantity Per Unit</td>
+            <td>Units In Stock</td>
             <td>Add to Cart</td>
           </tr>
         </thead>
@@ -57,24 +61,24 @@ export const ProductList = () => {
               <td className="td-button">
                 <Button
                   onclick={() => handlePop(product)}
-                  btn="btn-hover rmv"
+                  btn={
+                    handleTrashCheck(product.id)
+                      ? "btn-hover rmv"
+                      : "btn-hover rmv2"
+                  }
                   disabled={
-                    handleTrash(product).find((item) => item == "true")
+                    handleTrashCheck(product.id)
                       ? null
-                      : handleTrash(product)
+                      : handleTrash(product.id)
                   }
-                  message={
-                    handleTrash(product).find((item) => item == "true") ? (
-                      "-"
-                    ) : (
-                      <i className="fa-solid fa-basket-shopping" />
-                    )
-                  }
+                  message={handleTrashCheck(product.id) ? "-" : "trash"}
                 />
                 <Button
                   btn="btn-hover admin"
                   message={
-                    handleQuantity(product) ? handleQuantity(product) : null
+                    handleQuantity(product.id)
+                      ? handleQuantity(product.id)
+                      : null
                   }
                 />
                 <Button

@@ -1,6 +1,7 @@
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import { Menu, NotFound } from "./pages";
+import { CartList } from "./cart";
 import { Navi } from "./layout";
 import "./styles/app.css";
 
@@ -11,6 +12,7 @@ export const App = () => {
         <Navi />
         <Switch>
           <Route exact path="/" component={Menu} />
+          <Route component={CartList} />
           <Route component={NotFound} />
         </Switch>
         <ToastContainer theme="colored" />

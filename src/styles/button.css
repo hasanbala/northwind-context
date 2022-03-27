@@ -32,43 +32,6 @@
   box-shadow: 0 4px 15px 0 #17a86cbf;
 }
 
-/* go to profile button */
-.btn-hover.goprofile {
-  background-image: linear-gradient(
-    to right,
-    #ff7300,
-    #ff8929,
-    #ffd035,
-    #ffce47
-  );
-}
-
-/* login button */
-.btn-hover.login {
-  width: 100px;
-  background-image: linear-gradient(
-    to right,
-    #29323c,
-    #485563,
-    #2b5876,
-    #4e4376
-  );
-  box-shadow: 0 4px 15px 0 #2d3641bf;
-}
-
-/* signup button */
-.btn-hover.signup {
-  width: 100px;
-  background-image: linear-gradient(
-    to right,
-    #eb3941,
-    #f15e64,
-    #e14e53,
-    #e2373f
-  );
-  box-shadow: 0 5px 15px #f2616766;
-}
-
 /* out button */
 .btn-hover.out {
   background-image: linear-gradient(
@@ -95,6 +58,18 @@
 /* remove button */
 .btn-hover.rmv {
   width: 40px;
+  background-image: linear-gradient(
+    to right,
+    #e1256d,
+    #eb4492,
+    #e104fe,
+    #ad3fed
+  );
+  box-shadow: 0 4px 15px 0 #ff51cbbf;
+}
+.btn-hover.rmv2 {
+  width: 40px;
+  cursor: not-allowed;
   background-image: linear-gradient(
     to right,
     #e1256d,

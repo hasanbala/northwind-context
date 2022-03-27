@@ -49,8 +49,8 @@ export const Navi = () => {
                 marginLeft: "40px",
               }}
             >
-              <Link className="link" to="/" data-hover="General">
-                General
+              <Link className="link" to="/" data-hover="Main">
+                Main
               </Link>
             </li>
             <li
@@ -58,11 +58,7 @@ export const Navi = () => {
               style={{
                 marginLeft: "40px",
               }}
-            >
-              <Link className="link" to="/products" data-hover="Products">
-                Products
-              </Link>
-            </li>
+            ></li>
           </ul>
         </div>
         <ul

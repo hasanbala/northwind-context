@@ -1,3 +1,7 @@
+.product h3 {
+  margin: 0;
+}
+
 .td-button {
   display: flex;
   align-items: center;

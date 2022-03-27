@@ -29,11 +29,17 @@ export const cartReducer = (state, action) => {
         });
         return newCart;
       } else {
-        const newState2 = state.filter(
+        const newState = state.filter(
           (product) => product.item.id !== action.payload.item.id
         );
-        return newState2;
+        return newState;
       }
+
+    case "REMOVE-PRODUCTS":
+      const newState = state.filter(
+        (product) => product.item.id !== action.payload.item.id
+      );
+      return newState;
 
     default:
       return state;

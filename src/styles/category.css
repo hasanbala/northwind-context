@@ -1,0 +1,17 @@
+.category ul {
+  width: 100%;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+.category li {
+  padding: 10px;
+  border-radius: 5px;
+}
+.category li:hover {
+  background-color: #e2ffff;
+  cursor: pointer;
+}
+.category h3 {
+  margin: 0;
+}

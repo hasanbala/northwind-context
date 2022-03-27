@@ -33,6 +33,7 @@ export const MenuProvider = ({ children }) => {
     setStorage(cartState);
   }, [cartState, setStorage]);
 
+  console.log(cartState);
   const contextValue = {
     cartState,
     cartDispatch,

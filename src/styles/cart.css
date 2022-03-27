@@ -1,0 +1,30 @@
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+th,
+td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+th {
+  font-size: large;
+}
+
+tr:hover {
+  background-color: #e2ffff;
+}
+.adm-orders {
+  margin: 0 6%;
+}
+.adm-orders h2 {
+  color: #000;
+  margin: 30px 0;
+  padding: 20px 0;
+}
+.adm-sub-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
